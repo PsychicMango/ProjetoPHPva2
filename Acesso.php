@@ -39,6 +39,7 @@
                 <option value=""Elo"">Elo</option>
                 <option value=""American"">American Express</option>
                 <option value=""Hipercard"">Hipercard</option>
+                <option value="Sasageyo">Tatakae</option>
             </select>
 
             <input type=""submit"" value=""Buscar conta"" />
