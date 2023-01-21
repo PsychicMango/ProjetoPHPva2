@@ -2,7 +2,16 @@
 session_start();
 include "banco.php";
 ?>
-<form action="Inicio.php" method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso</title>
+</head>
+<body>
+<form method="POST" action="Acesso.php" >
 <fieldset>
         <legend>BN Midas</legend>
         <label>
@@ -11,26 +20,15 @@ include "banco.php";
         Bradesco
         <input type="radio" name="banco" value="2" />
         Caixa
-        <input type="radio" name="banco" value="3"/>
+        <input type="radio" name="banco" value="3" />
         ITAU
         </label>
+        
 </fieldset>
-    <input type="submit" value="Acessar banco" />
-</fieldset>
+    <input type="submit" value= "Acessar conta " name="Acessar conta">
+    <input type="submit" value= "Criar uma conta " name="Criar uma conta" formaction="Cadastro.php">
 </form>
-<?php if($_POST){
-    $banco= $_POST['banco'];
-    switch($banco){
-        case 1 :
-            header('Location:banco1.php');
-        break;
-        case 2 :
-            header('Location:banco2.php');
-        break;
-        case 3 :
-            header('Location:banco2.php');
-        break;
-    }
-}
-    
-?>
+       
+        </body>
+</html>
+
