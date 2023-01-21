@@ -1,13 +1,5 @@
 <?php
     include "auxiliares.php";
-    if($_POST)
-    {
-        $_SESSION['banco'][]= banco($_POST['banco']);
-    }
-    else
-    {
-        header('Location:Inicio.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,31 +9,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso</title>
 </head>
+<style>
+		/* Campos normais são brancos, campos com erro são vermelhos */
+		input[type="text"] { background-color: white; color: black; }
+		input:invalid      { background-color: #fcc ; color: red; }
+</style>
 <body>
     <fieldset>
-        <form action="validarAcesso.php">
+        <form action="ContaCriada.php" method="POST" onsubmit="return valida()">
             <label for="idnome">Nome:</label>
-            <input type="text" name="nome" id="idnome" placeholder="Insira seu Nome" maxlength="50" required>
+            <input type="text" name= "nome" id="idnome" placeholder="Insira seu Nome" maxlength="50" required>
 
-            <label for="idagencia">Agência:</label>
-            <input type="number" name="agencia" id="idagencia" placeholder="0000-0" required>
+            <label for="idnascimento">Data de Nascimento:</label>
+            <input type="date" name= "nascimento" id="idnascimento" required>
+            <label for="idcpf">CPF:</label>
+            <input type="text" name="cpf" id="idcpf"
+                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                
+                title="Digite o CPF no formato nnn.nnn.nnn-nn">
+                
 
-            <label for="idconta">Conta:</label>
-            <input type="number" name="conta" id="idconta" placeholder="000000" required>
+            <label for="iddigito">Telefone:</label>
+            <input type="tell" name= "digito" id="iddigito" placeholder="12-12345-6789" pattern="([0-9]{2}-[0-9]{5}-[0-9]{4})|([0-9]{11})"required>
 
-            <label for="iddigito">Digito da Conta:</label>
-            <input type="number" name="digito" id="iddigito" placeholder="0" required>
+            <label for="idendereco">Endereço:</label>
+            <input type="text" name= "endereco" id="idendereco" placeholder="Insira seu endereco" maxlength="50" required>
+           
+           <script>
+   <label for="idcpf">CPF:</label>
+   <input type="text" name="cpf"
+   id="idcpf"
+      pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+      title="Digite o CPF no formato nnn.nnn.nnn-nn"
+      placeholder="999.999.999.99"
+      oninvalid="return cpf_incorreto(this);">
+   <input type="submit">
 
-            <label for="bandeira">Bandeira:</label>
-            <select name="bandeira" id="bandeira" required>
-                <option value="Mastercard">Mastercard</option>
-                <option value="Visa">Visa</option>
-                <option value="Elo">Elo</option>
-                <option value="American">American Express</option>
-                <option value="Hipercard">Hipercard</option>
-            </select>
+<script>
+   function cpf_incorreto(el) {
+      alert("O valor " + el.value + " não é um CPF");
+      return false;
+   }
+</script>
 
-            <input type="submit" value="Buscar conta" />
+        <input type="submit" value="Criar conta" />
         </form>
     </fieldset>
 </body>
